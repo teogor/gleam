@@ -1,0 +1,190 @@
+public final class dev/teogor/gleam/ComposableSingletons$GleamKt {
+	public static final field INSTANCE Ldev/teogor/gleam/ComposableSingletons$GleamKt;
+	public static field lambda-1 Lkotlin/jvm/functions/Function2;
+	public static field lambda-2 Lkotlin/jvm/functions/Function2;
+	public fun <init> ()V
+	public final fun getLambda-1$gleam_release ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda-2$gleam_release ()Lkotlin/jvm/functions/Function2;
+}
+
+public final class dev/teogor/gleam/ComposableSingletons$GleamScaffoldKt {
+	public static final field INSTANCE Ldev/teogor/gleam/ComposableSingletons$GleamScaffoldKt;
+	public static field lambda-1 Lkotlin/jvm/functions/Function2;
+	public fun <init> ()V
+	public final fun getLambda-1$gleam_release ()Lkotlin/jvm/functions/Function2;
+}
+
+public abstract interface annotation class dev/teogor/gleam/ExperimentalGleamApi : java/lang/annotation/Annotation {
+}
+
+public final class dev/teogor/gleam/GleamDefaults {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/teogor/gleam/GleamDefaults;
+	public final fun DragHandle-lgZ2HuY (Landroidx/compose/ui/Modifier;FFLandroidx/compose/ui/graphics/Shape;JLandroidx/compose/runtime/Composer;II)V
+	public final fun getContainerColor (Landroidx/compose/runtime/Composer;I)J
+	public final fun getElevation-D9Ej5fM ()F
+	public final fun getExpandedShape (Landroidx/compose/runtime/Composer;I)Landroidx/compose/ui/graphics/Shape;
+	public final fun getGleamMaxWidth-D9Ej5fM ()F
+	public final fun getGleamPeekHeight-D9Ej5fM ()F
+	public final fun getHiddenShape (Landroidx/compose/runtime/Composer;I)Landroidx/compose/ui/graphics/Shape;
+	public final fun getScrimColor (Landroidx/compose/runtime/Composer;I)J
+	public final fun getWindowInsets (Landroidx/compose/runtime/Composer;I)Landroidx/compose/foundation/layout/WindowInsets;
+	public final fun properties-JTrpX9M (Landroidx/compose/ui/window/SecureFlagPolicy;ZZZZF)Ldev/teogor/gleam/GleamProperties;
+	public static synthetic fun properties-JTrpX9M$default (Ldev/teogor/gleam/GleamDefaults;Landroidx/compose/ui/window/SecureFlagPolicy;ZZZZFILjava/lang/Object;)Ldev/teogor/gleam/GleamProperties;
+}
+
+public final class dev/teogor/gleam/GleamKt {
+	public static final fun Gleam-dYc4hso (Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;Ldev/teogor/gleam/GleamState;FLandroidx/compose/ui/graphics/Shape;JJFJLkotlin/jvm/functions/Function2;Landroidx/compose/foundation/layout/WindowInsets;Ldev/teogor/gleam/GleamProperties;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;III)V
+	public static final fun rememberGleamState (ZLkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;II)Ldev/teogor/gleam/GleamState;
+}
+
+public final class dev/teogor/gleam/GleamProperties {
+	public static final field $stable I
+	public synthetic fun <init> (Landroidx/compose/ui/window/SecureFlagPolicy;ZZZZFLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAnimateCorners ()Z
+	public final fun getAnimateHorizontalEdge ()Z
+	public final fun getMaxHorizontalEdge-D9Ej5fM ()F
+	public final fun getSecurePolicy ()Landroidx/compose/ui/window/SecureFlagPolicy;
+	public final fun getShouldDismissOnBackPress ()Z
+	public fun hashCode ()I
+	public final fun isFocusable ()Z
+}
+
+public final class dev/teogor/gleam/GleamScaffoldKt {
+	public static final fun GleamScaffold-ockOeQw (Lkotlin/jvm/functions/Function3;ZLandroidx/compose/ui/Modifier;Ldev/teogor/gleam/GleamState;FLandroidx/compose/ui/graphics/Shape;JJFJLkotlin/jvm/functions/Function2;Landroidx/compose/foundation/layout/WindowInsets;Ldev/teogor/gleam/GleamProperties;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;III)V
+}
+
+public final class dev/teogor/gleam/GleamState {
+	public static final field $stable I
+	public static final field Companion Ldev/teogor/gleam/GleamState$Companion;
+	public fun <init> (ZLandroidx/compose/ui/unit/Density;Ldev/teogor/gleam/GleamValue;Lkotlin/jvm/functions/Function1;Z)V
+	public synthetic fun <init> (ZLandroidx/compose/ui/unit/Density;Ldev/teogor/gleam/GleamValue;Lkotlin/jvm/functions/Function1;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun confirmValueChange (Ldev/teogor/gleam/GleamValue;)Z
+	public final fun expand (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun forcedHide (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getCurrentValue ()Ldev/teogor/gleam/GleamValue;
+	public final fun getHasExpandedState ()Z
+	public final fun getHasPartiallyExpandedState ()Z
+	public final fun getTargetValue ()Ldev/teogor/gleam/GleamValue;
+	public final fun hide (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun isVisible ()Z
+	public final fun partialExpand (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun requireOffset ()F
+	public final fun show (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/teogor/gleam/GleamState$Companion {
+	public final fun Saver (ZLkotlin/jvm/functions/Function1;Landroidx/compose/ui/unit/Density;)Landroidx/compose/runtime/saveable/Saver;
+}
+
+public final class dev/teogor/gleam/GleamValue : java/lang/Enum {
+	public static final field Expanded Ldev/teogor/gleam/GleamValue;
+	public static final field Hidden Ldev/teogor/gleam/GleamValue;
+	public static final field PartiallyExpanded Ldev/teogor/gleam/GleamValue;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/teogor/gleam/GleamValue;
+	public static fun values ()[Ldev/teogor/gleam/GleamValue;
+}
+
+public final class dev/teogor/gleam/tokens/ColorSchemeKeyTokens : java/lang/Enum {
+	public static final field Background Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field Error Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field ErrorContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field InverseOnSurface Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field InversePrimary Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field InverseSurface Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnBackground Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnError Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnErrorContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnPrimary Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnPrimaryContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnPrimaryFixed Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnPrimaryFixedVariant Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnSecondary Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnSecondaryContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnSecondaryFixed Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnSecondaryFixedVariant Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnSurface Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnSurfaceVariant Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnTertiary Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnTertiaryContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnTertiaryFixed Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OnTertiaryFixedVariant Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field Outline Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field OutlineVariant Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field Primary Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field PrimaryContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field PrimaryFixed Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field PrimaryFixedDim Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field Scrim Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field Secondary Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SecondaryContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SecondaryFixed Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SecondaryFixedDim Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field Surface Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceBright Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceContainerHigh Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceContainerHighest Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceContainerLow Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceContainerLowest Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceDim Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceTint Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field SurfaceVariant Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field Tertiary Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field TertiaryContainer Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field TertiaryFixed Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static final field TertiaryFixedDim Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+	public static fun values ()[Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;
+}
+
+public final class dev/teogor/gleam/tokens/ShapeKeyTokens : java/lang/Enum {
+	public static final field CornerExtraLarge Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerExtraLargeTop Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerExtraSmall Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerExtraSmallTop Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerFull Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerLarge Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerLargeEnd Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerLargeTop Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerMedium Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerNone Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static final field CornerSmall Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+	public static fun values ()[Ldev/teogor/gleam/tokens/ShapeKeyTokens;
+}
+
+public final class dev/teogor/gleam/utils/ColorSchemeKt {
+	public static final fun fromToken (Landroidx/compose/material3/ColorScheme;Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;)J
+	public static final fun getValue (Ldev/teogor/gleam/tokens/ColorSchemeKeyTokens;Landroidx/compose/runtime/Composer;I)J
+}
+
+public final class dev/teogor/gleam/utils/CornerSizeKt {
+	public static final fun toDp (Landroidx/compose/foundation/shape/CornerSize;)F
+	public static final fun toPx (Landroidx/compose/foundation/shape/CornerSize;)F
+}
+
+public final class dev/teogor/gleam/utils/InternalAtomicReference {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun compareAndSet (Ljava/lang/Object;Ljava/lang/Object;)Z
+	public final fun get ()Ljava/lang/Object;
+	public final fun getAndSet (Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun set (Ljava/lang/Object;)V
+}
+
+public final class dev/teogor/gleam/utils/ShapesKt {
+	public static final fun fromToken (Landroidx/compose/material3/Shapes;Ldev/teogor/gleam/tokens/ShapeKeyTokens;)Landroidx/compose/ui/graphics/Shape;
+	public static final fun getValue (Ldev/teogor/gleam/tokens/ShapeKeyTokens;Landroidx/compose/runtime/Composer;I)Landroidx/compose/ui/graphics/Shape;
+}
+
+public final class dev/teogor/gleam/utils/WindowInsetsKt {
+	public static final fun getHorizontalSystemBarsForVisuals (Landroidx/compose/foundation/layout/WindowInsets$Companion;Landroidx/compose/runtime/Composer;I)Landroidx/compose/foundation/layout/WindowInsets;
+	public static final fun getNone (Landroidx/compose/foundation/layout/WindowInsets$Companion;Landroidx/compose/runtime/Composer;I)Landroidx/compose/foundation/layout/WindowInsets;
+	public static final fun getVerticalSystemBarsForVisuals (Landroidx/compose/foundation/layout/WindowInsets$Companion;Landroidx/compose/runtime/Composer;I)Landroidx/compose/foundation/layout/WindowInsets;
+}
+

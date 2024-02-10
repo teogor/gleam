@@ -1,0 +1,193 @@
+/*
+ * Copyright 2024 teogor (Teodor Grigor)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package dev.teogor.gleam.utils
+
+import androidx.compose.foundation.MutatePriority
+import androidx.compose.runtime.Stable
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import java.util.concurrent.atomic.AtomicReference
+
+/**
+ * An internal copy of [androidx.compose.foundation.MutatorMutex].
+ *
+ * It's a wrapper around [java.util.concurrent.atomic.AtomicReference] that provides
+ * basic atomic operations for managing a reference to a value in a thread-safe manner.
+ *
+ * **Do not modify this class directly, except for the `tryMutate` method.**
+ *
+ * @param V The type of the value held by the reference.
+ */
+class InternalAtomicReference<V>(value: V) {
+  private val atomicReference = AtomicReference(value)
+
+  fun get(): V = atomicReference.get()
+
+  fun set(value: V) {
+    atomicReference.set(value)
+  }
+
+  fun getAndSet(value: V): V = atomicReference.getAndSet(value)
+
+  fun compareAndSet(expect: V, newValue: V): Boolean = atomicReference.compareAndSet(
+    expect,
+    newValue,
+  )
+}
+
+/**
+ * Enforces mutual exclusion for UI state mutation over time using suspendable functions.
+ *
+ * This class is designed to manage exclusive access to state resources that might be
+ * modified by multiple coroutines or other asynchronous operations. It ensures that
+ * only one caller can modify the state at a time, preventing race conditions and
+ * ensuring consistency.
+ *
+ * It uses a priority-based mechanism for handling conflicting mutations, allowing
+ * higher-priority mutations to interrupt lower-priority ones if necessary.
+ *
+ * **This class is intended for internal use within Compose framework components.**
+ *
+ * @see mutate
+ * @see mutateWith
+ * @see tryMutate
+ */
+@Stable
+internal class InternalMutatorMutex {
+  private class Mutator(val priority: MutatePriority, val job: Job) {
+    fun canInterrupt(other: Mutator) = priority >= other.priority
+
+    fun cancel() = job.cancel()
+  }
+
+  private val currentMutator = InternalAtomicReference<Mutator?>(null)
+  private val mutex = Mutex()
+
+  private fun tryMutateOrCancel(mutator: Mutator) {
+    while (true) {
+      val oldMutator = currentMutator.get()
+      if (oldMutator == null || mutator.canInterrupt(oldMutator)) {
+        if (currentMutator.compareAndSet(oldMutator, mutator)) {
+          oldMutator?.cancel()
+          break
+        }
+      } else {
+        throw CancellationException("Current mutation had a higher priority")
+      }
+    }
+  }
+
+  /**
+   * Enforce that only a single caller may be active at a time.
+   *
+   * If [mutate] is called while another call to [mutate] or [mutateWith] is in progress, their
+   * [priority] values are compared. If the new caller has a [priority] equal to or higher than
+   * the call in progress, the call in progress will be cancelled, throwing
+   * [CancellationException] and the new caller's [block] will be invoked. If the call in
+   * progress had a higher [priority] than the new caller, the new caller will throw
+   * [CancellationException] without invoking [block].
+   *
+   * @param priority the priority of this mutation; [MutatePriority.Default] by default.
+   * Higher priority mutations will interrupt lower priority mutations.
+   * @param block mutation code to run mutually exclusive with any other call to [mutate],
+   * [mutateWith] or [tryMutate].
+   */
+  suspend fun <R> mutate(
+    priority: MutatePriority = MutatePriority.Default,
+    block: suspend () -> R,
+  ) = coroutineScope {
+    val mutator = Mutator(priority, coroutineContext[Job]!!)
+
+    tryMutateOrCancel(mutator)
+
+    mutex.withLock {
+      try {
+        block()
+      } finally {
+        currentMutator.compareAndSet(mutator, null)
+      }
+    }
+  }
+
+  /**
+   * Enforce that only a single caller may be active at a time.
+   *
+   * If [mutateWith] is called while another call to [mutate] or [mutateWith] is in progress,
+   * their [priority] values are compared. If the new caller has a [priority] equal to or
+   * higher than the call in progress, the call in progress will be cancelled, throwing
+   * [CancellationException] and the new caller's [block] will be invoked. If the call in
+   * progress had a higher [priority] than the new caller, the new caller will throw
+   * [CancellationException] without invoking [block].
+   *
+   * This variant of [mutate] calls its [block] with a [receiver], removing the need to create
+   * an additional capturing lambda to invoke it with a receiver object. This can be used to
+   * expose a mutable scope to the provided [block] while leaving the rest of the state object
+   * read-only. For example:
+   *
+   * @param receiver the receiver `this` that [block] will be called with
+   * @param priority the priority of this mutation; [MutatePriority.Default] by default.
+   * Higher priority mutations will interrupt lower priority mutations.
+   * @param block mutation code to run mutually exclusive with any other call to [mutate],
+   * [mutateWith] or [tryMutate].
+   */
+  suspend fun <T, R> mutateWith(
+    receiver: T,
+    priority: MutatePriority = MutatePriority.Default,
+    block: suspend T.() -> R,
+  ) = coroutineScope {
+    val mutator = Mutator(priority, coroutineContext[Job]!!)
+
+    tryMutateOrCancel(mutator)
+
+    mutex.withLock {
+      try {
+        receiver.block()
+      } finally {
+        currentMutator.compareAndSet(mutator, null)
+      }
+    }
+  }
+
+  /**
+   * Attempt to mutate synchronously if there is no other active caller.
+   * If there is no other active caller, the [block] will be executed in a lock. If there is
+   * another active caller, this method will return false, indicating that the active caller
+   * needs to be cancelled through a [mutate] or [mutateWith] call with an equal or higher
+   * mutation priority.
+   *
+   * Calls to [mutate] and [mutateWith] will suspend until execution of the [block] has finished.
+   *
+   * @param block mutation code to run mutually exclusive with any other call to [mutate],
+   * [mutateWith] or [tryMutate].
+   * @return true if the [block] was executed, false if there was another active caller and the
+   * [block] was not executed.
+   */
+  fun tryMutate(block: () -> Unit): Boolean {
+    val didLock = mutex.tryLock()
+    if (didLock) {
+      try {
+        block()
+      } finally {
+        mutex.unlock()
+      }
+    }
+    return didLock
+  }
+}

@@ -1,0 +1,55 @@
+public final class dev/teogor/gleam/navigation/ComposableSingletons$GleamNavigatorKt {
+	public static final field INSTANCE Ldev/teogor/gleam/navigation/ComposableSingletons$GleamNavigatorKt;
+	public static field lambda-1 Lkotlin/jvm/functions/Function4;
+	public fun <init> ()V
+	public final fun getLambda-1$gleam_navigation_release ()Lkotlin/jvm/functions/Function4;
+}
+
+public final class dev/teogor/gleam/navigation/ComposableSingletons$GleamScaffoldKt {
+	public static final field INSTANCE Ldev/teogor/gleam/navigation/ComposableSingletons$GleamScaffoldKt;
+	public static field lambda-1 Lkotlin/jvm/functions/Function2;
+	public fun <init> ()V
+	public final fun getLambda-1$gleam_navigation_release ()Lkotlin/jvm/functions/Function2;
+}
+
+public final class dev/teogor/gleam/navigation/GleamNavigator : androidx/navigation/Navigator {
+	public static final field $stable I
+	public fun <init> (Ldev/teogor/gleam/GleamState;)V
+	public synthetic fun createDestination ()Landroidx/navigation/NavDestination;
+	public fun createDestination ()Ldev/teogor/gleam/navigation/GleamNavigator$Destination;
+	public final fun getGleamContent ()Lkotlin/jvm/functions/Function3;
+	public final fun getNavigatorGleamState ()Ldev/teogor/gleam/navigation/GleamNavigatorState;
+	public final fun getShouldBeVisible (Landroidx/compose/runtime/Composer;I)Z
+	public final fun isVisible (Landroidx/compose/runtime/Composer;I)Z
+	public fun navigate (Ljava/util/List;Landroidx/navigation/NavOptions;Landroidx/navigation/Navigator$Extras;)V
+	public fun onAttach (Landroidx/navigation/NavigatorState;)V
+	public fun popBackStack (Landroidx/navigation/NavBackStackEntry;Z)V
+}
+
+public final class dev/teogor/gleam/navigation/GleamNavigator$Destination : androidx/navigation/NavDestination, androidx/navigation/FloatingWindow {
+	public static final field $stable I
+	public fun <init> (Ldev/teogor/gleam/navigation/GleamNavigator;Lkotlin/jvm/functions/Function4;)V
+}
+
+public final class dev/teogor/gleam/navigation/GleamNavigatorKt {
+	public static final fun provideNavController (Ldev/teogor/gleam/navigation/GleamNavigator;Landroidx/navigation/NavHostController;)Ldev/teogor/gleam/navigation/GleamNavigator;
+	public static final fun rememberGleamNavigator (Landroidx/compose/runtime/Composer;I)Ldev/teogor/gleam/navigation/GleamNavigator;
+}
+
+public final class dev/teogor/gleam/navigation/GleamNavigatorState {
+	public static final field $stable I
+	public fun <init> (Ldev/teogor/gleam/GleamState;)V
+	public final fun getCurrentValue ()Ldev/teogor/gleam/GleamValue;
+	public final fun getTargetValue ()Ldev/teogor/gleam/GleamValue;
+	public final fun isVisible ()Z
+}
+
+public final class dev/teogor/gleam/navigation/GleamScaffoldKt {
+	public static final fun GleamScaffold-wJDFFp8 (Ldev/teogor/gleam/navigation/GleamNavigator;Landroidx/compose/ui/Modifier;FLandroidx/compose/ui/graphics/Shape;JJFJLkotlin/jvm/functions/Function2;Landroidx/compose/foundation/layout/WindowInsets;Ldev/teogor/gleam/GleamProperties;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;III)V
+}
+
+public final class dev/teogor/gleam/navigation/NavGraphBuilderKt {
+	public static final fun gleam (Landroidx/navigation/NavGraphBuilder;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lkotlin/jvm/functions/Function4;)V
+	public static synthetic fun gleam$default (Landroidx/navigation/NavGraphBuilder;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Lkotlin/jvm/functions/Function4;ILjava/lang/Object;)V
+}
+

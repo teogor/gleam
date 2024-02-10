@@ -1,13 +1,4 @@
-![gleam](docs/gleam-cover.jpg)
-
-## Overview
-
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Maven Central](https://img.shields.io/maven-central/v/dev.teogor.gleam/gleam.svg?label=Maven%20Central)](https://central.sonatype.com/search?q=g%3A%22dev.teogor.gleam%22+a%3A%22gleam%22&smo=true)
-[![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=24)
-[![Profile](https://source.teogor.dev/badges/teogor-github.svg)](https://github.com/teogor)
-[![Docs](https://source.teogor.dev/badges/docs-gleam.svg)](https://source.teogor.dev/gleam/)
-[![Dokka](https://source.teogor.dev/badges/dokka-gleam.svg)](https://source.teogor.dev/gleam/html/)
+![gleam](gleam-cover.jpg)
 
 ## Why Gleam?
 
@@ -65,11 +56,21 @@ seamlessly integrate, and elevate your user experience.
 
 Add the dependency below into your **module**'s `build.gradle` file:
 
-```gradle
-dependencies {
-    implementation "dev.teogor.gleam:gleam:1.0.0-alpha01"
-}
-```
+=== "Kotlin"
+
+    ```kotlin
+    dependencies {
+      implementation("dev.teogor.gleam:gleam:1.0.0-alpha01")
+    }
+    ```
+
+=== "Groovy"
+
+    ```groovy
+    dependencies {
+      implementation "dev.teogor.gleam:gleam:1.0.0-alpha01"
+    }
+    ```
 
 ## Documentation
 
@@ -78,7 +79,7 @@ complete [documentation available here](https://source.teogor.dev/gleam).
 
 ## Implementation
 
-### Implementing Gleam:
+### Implementing Gleam
 
 This section provides a step-by-step guide to using `Gleam` in your Compose app:
 
@@ -146,7 +147,7 @@ This part is crucial:
 
 View implementation in [demo](app/src/main/kotlin/dev/teogor/gleam/demo/MainActivity.kt)
 
-### Implementing Gleam with Scaffolding (GleamScaffold):
+### Implementing Gleam with Scaffolding (GleamScaffold)
 
 This section provides a step-by-step guide to using `GleamScaffold` in your Compose app:
 
@@ -199,7 +200,7 @@ Wrap your main app content with `GleamScaffold`
 By following these steps and adapting them to your specific needs, you can effectively
 use `GleamScaffold` to create engaging and well-designed bottom sheets in your Compose apps.
 
-### Implementing Gleam with Navigation:
+### Implementing Gleam with Navigation
 
 > [!NOTE]
 > Ensure you have added the `dev.teogor.gleam:gleam-navigation` dependency
@@ -248,7 +249,13 @@ GleamScaffold(
 )
 ```
 
-### `Gleam`:
+## Components
+
+This section introduces the core building blocks of our UI library: `Gleam` and `GleamScaffold`.
+They offer powerful and flexible ways to display content, interact with users, and enhance your
+app's user experience.
+
+### Gleam
 
 **Purpose:**
 
@@ -259,11 +266,13 @@ GleamScaffold(
 
 - `onDismissRequest`: Called when the user dismisses the `Gleam` by clicking outside.
 - `modifier`: Optional modifiers for the `Gleam`.
-- `gleamState`: The state object managing the `Gleam`'s visibility and animation (usually `rememberGleamState()`).
+- `gleamState`: The state object managing the `Gleam`'s visibility and animation (
+  usually `rememberGleamState()`).
 - `gleamMaxWidth`: Maximum width of the `Gleam` in `Dp` (use `Dp.Unspecified` for full width).
 - `shape`: Defines the shape of the `Gleam`'s container (e.g., rounded corners).
 - `containerColor`: The background color of the `Gleam` container.
-- `contentColor`: Preferred color for content inside the `Gleam` (defaults based on `containerColor`).
+- `contentColor`: Preferred color for content inside the `Gleam` (defaults based
+  on `containerColor`).
 - `tonalElevation`: The shadow level of the `Gleam` (in `Dp`).
 - `scrimColor`: The color of the overlay behind the `Gleam` when open.
 - `dragHandle`: Optional composable for a visual swipe handle.
@@ -271,7 +280,7 @@ GleamScaffold(
 - `properties`: Additional customization options through `GleamProperties`.
 - `content`: The content displayed inside the `Gleam`, defined as a composable function.
 
-### `GleamScaffold`:
+### GleamScaffold
 
 **Purpose:**
 
@@ -284,18 +293,19 @@ GleamScaffold(
 - `gleamContent`: The content displayed inside the `Gleam`, defined as a composable function.
 - `isVisible`: Boolean, determines if the `Gleam` is visible (`true`) or hidden (`false`).
 - `modifier`: Optional modifiers to apply to the `Gleam`.
-- `gleamState`: The state object managing the `Gleam`'s visibility and animation (usually `rememberGleamState()`).
+- `gleamState`: The state object managing the `Gleam`'s visibility and animation (
+  usually `rememberGleamState()`).
 - `gleamMaxWidth`: Maximum width of the `Gleam` in `Dp` (use `Dp.Unspecified` for full width).
 - `shape`: Defines the shape of the `Gleam`'s container (e.g., rounded corners).
 - `containerColor`: The background color of the `Gleam` container.
-- `contentColor`: Preferred color for content inside the `Gleam` (defaults based on `containerColor`).
+- `contentColor`: Preferred color for content inside the `Gleam` (defaults based
+  on `containerColor`).
 - `tonalElevation`: The shadow level of the `Gleam` (in `Dp`).
 - `scrimColor`: The color of the overlay behind the `Gleam` when open.
 - `dragHandle`: Optional composable for a visual swipe handle.
 - `windowInsets`: Insets for proper layout and positioning.
 - `properties`: Additional customization options through `GleamProperties`.
 - `content`: The content displayed beneath the `Gleam`.
-
 
 ## Find this repository useful? 🩷
 
@@ -309,15 +319,9 @@ GleamScaffold(
 ```xml
   Designed and developed by 2024 teogor (Teodor Grigor)
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
+  Licensed under the Apache License, Version 2.0 (the "License");you may not use this file except in compliance with the License.You may obtain a copy of the License at
 
   http://www.apache.org/licenses/LICENSE-2.0
 
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
+  Unless required by applicable law or agreed to in writing, softwaredistributed under the License is distributed on an "AS IS" BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the specific language governing permissions andlimitations under the License.
 ```
